@@ -1,0 +1,160 @@
+WEBVTT
+
+1
+00:00:05.400 --> 00:00:08.320
+Fieldnote one. Anatomy of a stack.
+
+2
+00:00:09.354 --> 00:00:12.124
+What is actually running when
+someone says “the stack”?
+
+3
+00:00:13.674 --> 00:00:15.804
+AKS is one part of the stack.
+
+4
+00:00:16.114 --> 00:00:18.674
+The stack is one development
+and test environment,
+
+5
+00:00:18.674 --> 00:00:20.604
+in one Azure resource group.
+
+6
+00:00:21.296 --> 00:00:23.226
+A stack is a resource group:
+
+7
+00:00:23.296 --> 00:00:27.066
+AKS, plus the Azure data
+services around it.
+
+8
+00:00:27.376 --> 00:00:28.656
+Not the cluster alone.
+
+9
+00:00:28.656 --> 00:00:33.866
+spi up creates AKS and its
+Azure resources together.
+
+10
+00:00:36.044 --> 00:00:38.614
+Some of those resources
+belong to a partition,
+
+11
+00:00:38.684 --> 00:00:40.134
+and some are shared.
+
+12
+00:00:40.284 --> 00:00:43.564
+For the example partition,
+opendes, records,
+
+13
+00:00:43.564 --> 00:00:47.254
+blobs, and events each have
+their own Azure resource:
+
+14
+00:00:47.644 --> 00:00:52.614
+a Cosmos DB account, a Storage
+account, and a Service Bus namespace.
+
+15
+00:00:52.964 --> 00:00:57.254
+Entitlements, identities, and Key
+Vault are shared by the environment.
+
+16
+00:00:59.684 --> 00:01:03.604
+Inside AKS, the OSDU services
+run in one namespace,
+
+17
+00:01:03.604 --> 00:01:07.964
+one image each. Every request reaches
+them through the Istio gateway,
+
+18
+00:01:07.964 --> 00:01:11.134
+which routes each API path to its service.
+
+19
+00:01:13.380 --> 00:01:14.750
+Follow one request.
+
+20
+00:01:14.980 --> 00:01:20.020
+A client asks for the opendes partition,
+with a bearer token and a data partition
+
+21
+00:01:20.020 --> 00:01:23.300
+id. The gateway routes it
+to the Partition service,
+
+22
+00:01:23.300 --> 00:01:26.990
+which identifies the caller
+and reads stored configuration:
+
+23
+00:01:27.140 --> 00:01:28.990
+tables in common Storage.
+
+24
+00:01:29.140 --> 00:01:32.630
+This lookup never touches
+the partition's Cosmos DB,
+
+25
+00:01:32.900 --> 00:01:35.790
+blob Storage, or Service Bus.
+
+26
+00:01:37.768 --> 00:01:38.928
+An easy mistake:
+
+27
+00:01:38.928 --> 00:01:41.418
+the stack is just AKS.
+
+28
+00:01:41.648 --> 00:01:47.328
+AKS runs the Kubernetes workloads, but
+the same resource group holds Azure data
+
+29
+00:01:47.328 --> 00:01:49.498
+services outside the cluster.
+
+30
+00:01:49.968 --> 00:01:52.778
+To check, list the resources in the group.
+
+31
+00:01:54.604 --> 00:01:55.934
+So now you can say:
+
+32
+00:01:56.004 --> 00:01:59.854
+the stack is AKS plus Azure data services.
+
+33
+00:01:59.924 --> 00:02:03.374
+Partition resources, and shared resources.
+
+34
+00:02:03.764 --> 00:02:07.934
+And the services run in one
+namespace, behind one gateway.
+
+35
+00:02:10.548 --> 00:02:14.718
+Next: how is the stack created,
+and when is it usable?
+
