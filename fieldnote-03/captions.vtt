@@ -1,0 +1,235 @@
+WEBVTT
+
+1
+00:00:04.600 --> 00:00:06.310
+Fieldnote three.
+
+2
+00:00:06.310 --> 00:00:08.320
+The SPI boundary.
+
+3
+00:00:09.346 --> 00:00:12.436
+Where does shared code hand the
+lookup to the Azure provider?
+
+4
+00:00:13.828 --> 00:00:16.158
+The provider lives inside the service.
+
+5
+00:00:16.308 --> 00:00:19.038
+Open the partition
+service from lesson one.
+
+6
+00:00:20.468 --> 00:00:25.758
+Inside it, a Service Provider Interface
+connects shared code to an implementation.
+
+7
+00:00:25.988 --> 00:00:30.828
+The community implementation and the Azure
+implementation connect that interface to
+
+8
+00:00:30.828 --> 00:00:32.398
+different dependencies.
+
+9
+00:00:34.632 --> 00:00:37.192
+Common service code calls
+a provider interface:
+
+10
+00:00:37.192 --> 00:00:42.792
+getPartition. The Azure implementation
+behind it checks Redis inside
+
+11
+00:00:42.792 --> 00:00:45.282
+AKS, with middleware credentials.
+
+12
+00:00:45.672 --> 00:00:50.152
+On a miss, it reads common
+Table Storage outside AKS,
+
+13
+00:00:50.152 --> 00:00:51.602
+with Workload Identity.
+
+14
+00:00:51.992 --> 00:00:55.602
+And the table read still
+happens when the cache throws.
+
+15
+00:00:58.152 --> 00:01:01.522
+The interface and its
+implementation ship in one image.
+
+16
+00:01:01.992 --> 00:01:04.632
+The Azure module depends
+on partition-core,
+
+17
+00:01:04.632 --> 00:01:09.202
+the shared code, and the build
+packs both into one executable JAR.
+
+18
+00:01:09.592 --> 00:01:11.602
+The image copies that JAR in.
+
+19
+00:01:12.152 --> 00:01:15.922
+So crossing the interface is a
+method call inside one process.
+
+20
+00:01:16.152 --> 00:01:18.082
+There is no network hop between them.
+
+21
+00:01:20.648 --> 00:01:24.978
+The fork maintains the Azure provider
+separately from generated shared code.
+
+22
+00:01:25.128 --> 00:01:28.578
+The shared code is regenerated
+from the community repository.
+
+23
+00:01:28.808 --> 00:01:31.768
+The Azure provider stays fork-owned.
+
+24
+00:01:31.768 --> 00:01:34.808
+So when upstream removes
+its own Azure copy,
+
+25
+00:01:34.808 --> 00:01:39.138
+as it plans to, the fork's
+provider stays where it is.
+
+26
+00:01:41.656 --> 00:01:45.106
+Follow the same lookup from lesson
+one, now through the provider.
+
+27
+00:01:45.416 --> 00:01:48.096
+The request for opendes
+reaches common code,
+
+28
+00:01:48.096 --> 00:01:51.016
+which checks the caller,
+then calls the interface.
+
+29
+00:01:51.016 --> 00:01:56.866
+No network hop. The Azure implementation
+checks the Redis cache inside AKS.
+
+30
+00:01:57.256 --> 00:02:01.056
+On a healthy miss, it reads
+Table Storage outside AKS,
+
+31
+00:02:01.056 --> 00:02:02.386
+which returns opendes.
+
+32
+00:02:02.776 --> 00:02:04.466
+Now take the cache down.
+
+33
+00:02:04.856 --> 00:02:08.136
+The cache read throws,
+safeGet treats it as a miss,
+
+34
+00:02:08.136 --> 00:02:10.226
+and Table Storage answers anyway.
+
+35
+00:02:10.776 --> 00:02:14.216
+This lookup never touches
+the partition's Cosmos DB,
+
+36
+00:02:14.216 --> 00:02:16.386
+blob Storage, or Service Bus.
+
+37
+00:02:18.812 --> 00:02:20.132
+An easy mistake:
+
+38
+00:02:20.132 --> 00:02:23.502
+the token was accepted, so
+the call is authorized.
+
+39
+00:02:23.732 --> 00:02:27.902
+The sidecar validates the token
+against the configured Entra issuers.
+
+40
+00:02:28.052 --> 00:02:29.742
+That is authentication.
+
+41
+00:02:29.892 --> 00:02:32.302
+The service still decides authorization.
+
+42
+00:02:32.452 --> 00:02:35.502
+For most services, that is
+an entitlements lookup.
+
+43
+00:02:35.732 --> 00:02:39.182
+The partition service admits
+app-only callers instead.
+
+44
+00:02:39.412 --> 00:02:43.822
+A 401 or 403 alone does not
+say which boundary failed.
+
+45
+00:02:43.972 --> 00:02:49.102
+To check, read the request
+authentication in the OSDU namespace.
+
+46
+00:02:51.384 --> 00:02:52.594
+So now you can say:
+
+47
+00:02:52.744 --> 00:02:55.874
+common code calls Azure
+through a provider interface.
+
+48
+00:02:56.024 --> 00:02:59.074
+The interface and implementation
+ship in one image.
+
+49
+00:02:59.224 --> 00:03:02.674
+And the fork keeps Azure source
+outside the generated tree.
+
+50
+00:03:05.288 --> 00:03:10.818
+Next: who owns that provider code, and
+how does it survive upstream deleting it?
+

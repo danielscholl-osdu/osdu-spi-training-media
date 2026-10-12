@@ -1,0 +1,22 @@
+WEBVTT
+
+1
+00:00:33.522 --> 00:00:57.442
+Common code calls Azure through a provider interface.
+
+2
+00:00:57.442 --> 00:01:19.938
+The interface and implementation ship in one image.
+
+3
+00:01:19.938 --> 00:01:40.946
+The fork keeps Azure source outside the generated tree.
+
+4
+00:01:40.946 --> 00:02:17.942
+Example: Follow the same lookup through the provider
+
+5
+00:02:17.942 --> 00:02:50.474
+Easy mistake: the token was accepted, so the call is authorized
+
