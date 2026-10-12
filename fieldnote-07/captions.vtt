@@ -1,0 +1,240 @@
+WEBVTT
+
+1
+00:00:04.400 --> 00:00:06.350
+Fieldnote seven.
+
+2
+00:00:06.350 --> 00:00:08.120
+Things that are not true.
+
+3
+00:00:09.194 --> 00:00:12.444
+Which reasonable assumptions
+will cost me an afternoon?
+
+4
+00:00:13.852 --> 00:00:15.702
+The assumptions that cause trouble.
+
+5
+00:00:16.092 --> 00:00:20.262
+Each is a reasonable thing to believe
+about a Kubernetes and Azure system.
+
+6
+00:00:20.572 --> 00:00:23.372
+The project's own
+documentation says otherwise,
+
+7
+00:00:23.372 --> 00:00:24.902
+and names how to check.
+
+8
+00:00:26.568 --> 00:00:29.538
+The smoke test passed, so the API works.
+
+9
+00:00:29.688 --> 00:00:34.408
+Not quite. The scheduled smoke
+test defaults to the bare profile,
+
+10
+00:00:34.408 --> 00:00:37.298
+which deploys no OSDU services at all.
+
+11
+00:00:37.688 --> 00:00:40.808
+It proves infrastructure
+and GitOps readiness,
+
+12
+00:00:40.808 --> 00:00:43.458
+not authenticated API behavior.
+
+13
+00:00:44.008 --> 00:00:48.258
+Ask yourself, and read
+the run's profile input.
+
+14
+00:00:50.292 --> 00:00:52.782
+Re-applying the manifest will retry it.
+
+15
+00:00:53.092 --> 00:00:56.462
+A HelmRelease that has used
+up its retries is stalled,
+
+16
+00:00:56.532 --> 00:01:00.222
+and re-applying the unchanged
+manifest does not move it.
+
+17
+00:01:00.612 --> 00:01:04.612
+spi reconcile clears the
+count and forces one attempt;
+
+18
+00:01:04.612 --> 00:01:06.862
+a bad chart needs a real change.
+
+19
+00:01:07.412 --> 00:01:08.622
+Ask Flux.
+
+20
+00:01:10.688 --> 00:01:12.218
+The role assignment is missing.
+
+21
+00:01:12.608 --> 00:01:17.008
+Maybe not. Cosmos DB data-plane
+grants are Cosmos-native,
+
+22
+00:01:17.008 --> 00:01:20.538
+and they do not appear in standard
+Azure role-assignment queries.
+
+23
+00:01:20.688 --> 00:01:24.538
+Propagation can lag, and services
+cache clients at startup.
+
+24
+00:01:25.328 --> 00:01:29.818
+Ask the CLI and Bicep, and
+list the Cosmos assignments.
+
+25
+00:01:31.836 --> 00:01:34.886
+There is a certificate, so
+the connection is encrypted.
+
+26
+00:01:35.676 --> 00:01:40.646
+Port 80 still serves the API
+routes, and nothing redirects.
+
+27
+00:01:41.116 --> 00:01:46.566
+A client that uses an http address
+sends its bearer token in plain text.
+
+28
+00:01:46.956 --> 00:01:51.286
+Ask Flux, and use the https endpoint.
+
+29
+00:01:53.336 --> 00:01:56.386
+The teardown job was
+green, so it was deleted.
+
+30
+00:01:56.536 --> 00:01:58.946
+Green means the deletion was requested.
+
+31
+00:01:59.256 --> 00:02:04.066
+The step tolerates failure, which is
+why a separate orphan sweeper exists.
+
+32
+00:02:04.376 --> 00:02:08.546
+Ask the CLI and Bicep, and
+check that the group is gone.
+
+33
+00:02:10.596 --> 00:02:14.686
+Template sync will overwrite the
+workflow change I made in my fork.
+
+34
+00:02:14.916 --> 00:02:17.006
+It opens a pull request instead.
+
+35
+00:02:17.636 --> 00:02:21.886
+Sync Template proposes the
+difference as one pull request,
+
+36
+00:02:21.956 --> 00:02:24.046
+labeled template sync.
+
+37
+00:02:24.756 --> 00:02:27.716
+A change you want to keep
+is a review comment,
+
+38
+00:02:27.716 --> 00:02:29.166
+not a lost file.
+
+39
+00:02:29.716 --> 00:02:31.486
+Ask the service fork.
+
+40
+00:02:33.520 --> 00:02:36.490
+The restore step puts
+the previous image back.
+
+41
+00:02:36.720 --> 00:02:39.130
+Only while this run still owns the pin.
+
+42
+00:02:39.280 --> 00:02:44.560
+If a newer run has pinned the slot,
+the reset leaves it alone and exits 2.
+
+43
+00:02:44.560 --> 00:02:48.650
+A cancelled run strands its pin
+until an operator clears it.
+
+44
+00:02:49.040 --> 00:02:52.090
+Ask yourself, and read the lock's pins.
+
+45
+00:02:54.324 --> 00:02:55.534
+So now you can say:
+
+46
+00:02:55.764 --> 00:02:59.604
+when something looks wrong,
+I know which owner to ask,
+
+47
+00:02:59.604 --> 00:03:02.094
+and which command shows
+its view of the world.
+
+48
+00:03:02.404 --> 00:03:07.534
+Provisioning, convergence, readiness,
+and proof are different signals,
+
+49
+00:03:07.604 --> 00:03:10.094
+and I check the one I actually need.
+
+50
+00:03:12.524 --> 00:03:15.814
+That is the path, from the
+resource group to the seam.
+
+51
+00:03:16.204 --> 00:03:19.254
+Each check names the lesson
+where its idea was built.
+
+52
+00:03:19.564 --> 00:03:21.414
+Go back to it when you need it.
+
