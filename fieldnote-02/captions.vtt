@@ -1,0 +1,181 @@
+WEBVTT
+
+1
+00:00:04.600 --> 00:00:08.240
+Fieldnote two. How it comes to life.
+
+2
+00:00:09.092 --> 00:00:11.942
+How is the stack created,
+and when is it usable?
+
+3
+00:00:13.406 --> 00:00:16.476
+spi up creates the environment.
+
+4
+00:00:16.476 --> 00:00:18.886
+Flux continues the rollout.
+
+5
+00:00:19.676 --> 00:00:24.396
+Follow one environment from your
+workstation into the resource group,
+
+6
+00:00:24.396 --> 00:00:27.126
+the cluster, and its namespaces.
+
+7
+00:00:27.196 --> 00:00:28.486
+Then remove it.
+
+8
+00:00:30.268 --> 00:00:34.038
+The CLI and Bicep create
+Azure and seed the cluster.
+
+9
+00:00:34.428 --> 00:00:36.828
+Flux assembles the workloads.
+
+10
+00:00:36.828 --> 00:00:38.598
+Controllers keep them healthy.
+
+11
+00:00:38.828 --> 00:00:44.598
+Flux starts before the CLI exits, and
+both keep working after it returns.
+
+12
+00:00:47.032 --> 00:00:50.802
+A successful spi up does
+not mean the API is ready.
+
+13
+00:00:51.192 --> 00:00:56.002
+Follow workload health and
+initialization with spi status --watch.
+
+14
+00:00:56.312 --> 00:01:00.802
+Then verify the API path you need,
+with an authenticated request.
+
+15
+00:01:01.592 --> 00:01:04.082
+In this take, it never got there.
+
+16
+00:01:04.472 --> 00:01:09.842
+The rollout stopped at 20 of 29,
+and the lookup found no route.
+
+17
+00:01:12.276 --> 00:01:17.716
+spi down removes compute and data, but keeps
+the managed identities and the resource
+
+18
+00:01:17.716 --> 00:01:22.286
+group. A rebuild reuses the same
+names, not the deleted data.
+
+19
+00:01:24.800 --> 00:01:28.250
+Before the lookup can answer,
+follow the same environment.
+
+20
+00:01:28.480 --> 00:01:32.330
+AKS is created first, in
+the stack's resource group.
+
+21
+00:01:32.880 --> 00:01:35.610
+Common Storage holds the partition table.
+
+22
+00:01:36.240 --> 00:01:39.200
+The bootstrap seeds
+namespaces, configuration,
+
+23
+00:01:39.200 --> 00:01:43.290
+and identity. Flux rolls
+out the Partition service.
+
+24
+00:01:43.920 --> 00:01:47.610
+Then an API caller's
+lookup for opendes works.
+
+25
+00:01:47.760 --> 00:01:52.290
+It reads stored configuration and never
+touches the partition's Cosmos DB,
+
+26
+00:01:52.480 --> 00:01:55.210
+blob Storage, or Service Bus.
+
+27
+00:01:57.436 --> 00:01:58.686
+An easy mistake:
+
+28
+00:01:58.756 --> 00:02:01.886
+GitOps is suspended, so nothing changes.
+
+29
+00:02:01.956 --> 00:02:05.726
+Before it returns, spi up
+suspends Git fetching.
+
+30
+00:02:05.876 --> 00:02:07.486
+That stops new commits.
+
+31
+00:02:07.636 --> 00:02:10.766
+But Flux keeps applying the
+revision it already has,
+
+32
+00:02:10.836 --> 00:02:13.876
+so a live edit to a Flux-managed
+object is reverted,
+
+33
+00:02:13.876 --> 00:02:15.646
+and controllers keep running.
+
+34
+00:02:16.036 --> 00:02:19.886
+To check, read the Git repository
+in the Flux namespace.
+
+35
+00:02:22.336 --> 00:02:23.546
+So now you can say:
+
+36
+00:02:23.856 --> 00:02:30.026
+the CLI creates, Flux assembles, and
+controllers keep workloads healthy.
+
+37
+00:02:30.656 --> 00:02:34.106
+CLI success is not API readiness.
+
+38
+00:02:34.736 --> 00:02:40.186
+And teardown removes data, but
+preserves identities and names.
+
+39
+00:02:42.568 --> 00:02:46.738
+Next: where does shared code hand
+the lookup to the Azure provider?
+
