@@ -1,0 +1,22 @@
+WEBVTT
+
+1
+00:00:32.486 --> 00:00:57.130
+Writing the lock starts the deploy.
+
+2
+00:00:57.130 --> 00:01:20.286
+A green restore is a claim about this run.
+
+3
+00:01:20.286 --> 00:01:42.622
+The stack publishes facts; the fork declares needs.
+
+4
+00:01:42.622 --> 00:02:11.506
+Example: Candidate B borrows the partition slot in the stack
+
+5
+00:02:11.506 --> 00:02:38.158
+Easy mistake: Validation Summary is green, so the change ran in a real environment
+
