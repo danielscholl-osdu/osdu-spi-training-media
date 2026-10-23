@@ -1,0 +1,277 @@
+WEBVTT
+
+1
+00:00:00.910 --> 00:00:03.080
+This environment was Ready.
+
+2
+00:00:03.230 --> 00:00:04.600
+It was Deployable.
+
+3
+00:00:05.310 --> 00:00:08.440
+And it held no reference data at all.
+
+4
+00:00:08.910 --> 00:00:11.400
+Six minutes and one command later:
+
+5
+00:00:11.470 --> 00:00:17.470
+80,103 records. Ready is
+
+6
+00:00:17.470 --> 00:00:18.360
+not loaded.
+
+7
+00:00:25.332 --> 00:00:29.452
+Fieldnote ten. Ready is not loaded.
+
+8
+00:00:30.510 --> 00:00:33.670
+When is a new environment
+ready, open for deploys,
+
+9
+00:00:33.670 --> 00:00:34.880
+and holding data?
+
+10
+00:00:36.352 --> 00:00:38.122
+Ready is Flux's verdict.
+
+11
+00:00:38.352 --> 00:00:41.082
+Deployable adds the
+environment's own gates.
+
+12
+00:00:41.472 --> 00:00:45.232
+And loading data is a separate
+step you run with spi load,
+
+13
+00:00:45.232 --> 00:00:46.682
+which changes neither.
+
+14
+00:00:48.566 --> 00:00:51.376
+spi status answers two questions.
+
+15
+00:00:51.606 --> 00:00:55.376
+Ready means every gating
+Flux layer has converged.
+
+16
+00:00:55.606 --> 00:00:59.486
+Layers marked non-gating, like
+legal seeding and DAG registration,
+
+17
+00:00:59.486 --> 00:01:01.216
+are shown but never count.
+
+18
+00:01:01.366 --> 00:01:03.456
+Deployable adds three more:
+
+19
+00:01:03.606 --> 00:01:07.006
+maintenance is off, the
+deploy record exists,
+
+20
+00:01:07.006 --> 00:01:10.416
+and the members Job has
+finished in every partition.
+
+21
+00:01:11.126 --> 00:01:13.206
+This environment came up at a release tag,
+
+22
+00:01:13.206 --> 00:01:15.136
+so it started in maintenance.
+
+23
+00:01:15.366 --> 00:01:18.976
+At 30 of 30 it was Ready,
+and not deployable.
+
+24
+00:01:19.126 --> 00:01:22.096
+After a lookup answered,
+maintenance was cleared,
+
+25
+00:01:22.166 --> 00:01:24.016
+and it read Deployable.
+
+26
+00:01:26.330 --> 00:01:29.540
+Bring-up registers the schemas,
+and writes no records.
+
+27
+00:01:29.770 --> 00:01:33.140
+That load is Flux's Job,
+behind a gating layer.
+
+28
+00:01:33.530 --> 00:01:36.650
+Reference data, from the
+community's data definitions,
+
+29
+00:01:36.650 --> 00:01:40.170
+is loaded by nothing
+until you run spi load.
+
+30
+00:01:40.170 --> 00:01:43.540
+The stack version ships a
+registry of named loads,
+
+31
+00:01:43.610 --> 00:01:46.010
+pins this one to a release and its commit,
+
+32
+00:01:46.010 --> 00:01:48.100
+and makes it wait for the schemas.
+
+33
+00:01:48.170 --> 00:01:52.820
+And spi load refuses to start until
+the environment is Deployable.
+
+34
+00:01:55.118 --> 00:01:58.328
+spi load created one
+Job for the partition.
+
+35
+00:01:58.638 --> 00:02:02.328
+It checked that all 584
+kinds were registered,
+
+36
+00:02:02.398 --> 00:02:06.248
+then wrote in batches of
+500, skipping duplicates.
+
+37
+00:02:06.638 --> 00:02:11.768
+80,103 records, none failed,
+in about six minutes.
+
+38
+00:02:11.998 --> 00:02:14.248
+Complete means Storage accepted them.
+
+39
+00:02:14.478 --> 00:02:20.248
+The indexer may still be working, and a
+load never changes Ready or Deployable.
+
+40
+00:02:22.746 --> 00:02:24.596
+Follow one environment from Ready.
+
+41
+00:02:25.066 --> 00:02:27.706
+Status says Ready, not deployable:
+
+42
+00:02:27.706 --> 00:02:32.116
+maintenance. You clear it,
+and the deploy record says so.
+
+43
+00:02:32.666 --> 00:02:35.786
+spi load checks Deployable
+and the schemas,
+
+44
+00:02:35.786 --> 00:02:37.636
+and creates the load Job.
+
+45
+00:02:38.026 --> 00:02:42.916
+The Job fetches the data definitions at
+a pinned commit and checks every kind.
+
+46
+00:02:43.226 --> 00:02:47.316
+Storage accepts 80,103 records.
+
+47
+00:02:47.986 --> 00:02:51.316
+And spi load --status reads complete.
+
+48
+00:02:53.926 --> 00:02:55.086
+An easy mistake:
+
+49
+00:02:55.086 --> 00:02:58.136
+it's Deployable, so the data is there.
+
+50
+00:02:58.366 --> 00:03:01.336
+Deployable says the
+environment can take a deploy.
+
+51
+00:03:01.646 --> 00:03:06.536
+Reference data is a separate load, and
+a load never changes either verdict.
+
+52
+00:03:06.766 --> 00:03:10.216
+So a search suite on a fresh
+environment can find nothing,
+
+53
+00:03:10.286 --> 00:03:13.336
+and nothing says why,
+unless you read the loads.
+
+54
+00:03:13.566 --> 00:03:17.336
+Check with spi load --status.
+
+55
+00:03:19.682 --> 00:03:21.092
+So now you can say:
+
+56
+00:03:21.242 --> 00:03:25.492
+Deployable is Ready, with maintenance
+off and bootstrap finished.
+
+57
+00:03:25.882 --> 00:03:29.492
+A Deployable environment
+holds schemas and no records.
+
+58
+00:03:29.642 --> 00:03:32.602
+And loaded means Storage
+accepted the records,
+
+59
+00:03:32.602 --> 00:03:34.452
+not that search finds them.
+
+60
+00:03:36.850 --> 00:03:41.330
+Next: how does a DAG reach the
+stack, who does each task act as,
+
+61
+00:03:41.330 --> 00:03:43.820
+and how do you know it stored anything?
+
