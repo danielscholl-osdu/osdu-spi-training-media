@@ -1,0 +1,22 @@
+WEBVTT
+
+1
+00:00:26.908 --> 00:00:48.104
+The fork owns provider/partition-azure, its Azure tests, its descriptor, and the engineering files the template delivers. Everything else is upstream’s, regenerated daily.
+
+2
+00:00:48.104 --> 00:01:08.356
+The fork has three branches with three jobs: fork_upstream is generated input, fork_integration is the workspace, main is the protected result. Upstream is outside all three.
+
+3
+00:01:08.356 --> 00:01:30.408
+fork_upstream is generated with the Azure paths absent by construction, so an upstream deletion has nothing to delete on the fork side.
+
+4
+00:01:30.408 --> 00:02:02.588
+Example: The cache fallback fix, at rest
+
+5
+00:02:02.588 --> 00:02:23.936
+Easy mistake: a fork is a copy we took once and patch as we go
+

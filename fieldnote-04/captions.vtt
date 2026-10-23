@@ -1,0 +1,194 @@
+WEBVTT
+
+1
+00:00:04.800 --> 00:00:08.400
+Fieldnote four. The shape of the fork.
+
+2
+00:00:09.268 --> 00:00:13.518
+Who owns that provider code, and how
+does it survive upstream deleting it?
+
+3
+00:00:14.958 --> 00:00:17.368
+Upstream does not carry
+the Azure provider.
+
+4
+00:00:17.438 --> 00:00:22.718
+The fork does. A service fork is a
+short list of paths the fork owns,
+
+5
+00:00:22.718 --> 00:00:25.768
+beside a tree regenerated
+from upstream every day.
+
+6
+00:00:27.618 --> 00:00:31.298
+The fork owns the Azure
+provider, its Azure tests,
+
+7
+00:00:31.298 --> 00:00:35.308
+its descriptor, and the engineering
+files the template delivers.
+
+8
+00:00:35.938 --> 00:00:39.228
+Everything else is
+upstream's, regenerated daily.
+
+9
+00:00:39.458 --> 00:00:45.458
+Partition is the reference fork, and every
+OSDU service the stack runs has a fork of
+
+10
+00:00:45.458 --> 00:00:46.348
+this shape.
+
+11
+00:00:48.814 --> 00:00:51.774
+The fork has three
+branches, with three jobs.
+
+12
+00:00:51.774 --> 00:00:54.174
+fork_upstream is generated input.
+
+13
+00:00:54.174 --> 00:00:57.064
+fork_integration is the workspace.
+
+14
+00:00:57.214 --> 00:01:03.144
+main is the protected result, and its
+image is the one the stack runs by default.
+
+15
+00:01:03.294 --> 00:01:06.584
+And upstream is outside all three.
+
+16
+00:01:08.956 --> 00:01:13.556
+fork_upstream is generated with the
+Azure paths absent by construction.
+
+17
+00:01:13.786 --> 00:01:17.556
+So an upstream deletion has
+nothing to delete on the fork side.
+
+18
+00:01:18.226 --> 00:01:22.986
+When upstream removed its Azure provider,
+fork_upstream changed only a few shared
+
+19
+00:01:22.986 --> 00:01:25.716
+files, and nothing the fork owns.
+
+20
+00:01:26.266 --> 00:01:28.436
+Main still holds the provider.
+
+21
+00:01:31.118 --> 00:01:34.968
+Follow a fix like the cache
+fallback, made in the fork today.
+
+22
+00:01:35.198 --> 00:01:37.608
+From here the journey is illustrative.
+
+23
+00:01:37.838 --> 00:01:40.638
+The fix lands in the fork-owned directory,
+
+24
+00:01:40.638 --> 00:01:44.648
+with its tests. The workflows
+the template delivered check it.
+
+25
+00:01:44.958 --> 00:01:46.808
+It reaches main, approved.
+
+26
+00:01:47.118 --> 00:01:49.368
+Meanwhile, upstream moves:
+
+27
+00:01:49.518 --> 00:01:52.158
+a change to partition-core.
+
+28
+00:01:52.158 --> 00:01:57.688
+And tonight at midnight UTC,
+fork_upstream is regenerated.
+
+29
+00:01:58.158 --> 00:02:01.048
+Two changes are now waiting to meet.
+
+30
+00:02:03.258 --> 00:02:04.508
+An easy mistake:
+
+31
+00:02:04.578 --> 00:02:08.508
+a fork is a copy we took
+once, and patch as we go.
+
+32
+00:02:09.058 --> 00:02:11.868
+The service fork keeps a
+relationship with upstream,
+
+33
+00:02:12.018 --> 00:02:13.308
+not a copy of it.
+
+34
+00:02:13.938 --> 00:02:18.268
+Every day the filter regenerates
+fork_upstream from the upstream tip.
+
+35
+00:02:18.738 --> 00:02:22.028
+To check, read the
+generated commit's trailers.
+
+36
+00:02:24.886 --> 00:02:26.126
+So now you can say:
+
+37
+00:02:26.126 --> 00:02:31.576
+the fork owns a short list of paths, and
+everything else is regenerated daily.
+
+38
+00:02:31.726 --> 00:02:35.976
+Three branches, three jobs, with
+upstream outside all three.
+
+39
+00:02:36.766 --> 00:02:42.366
+And fork_upstream carries no Azure paths,
+so an upstream deletion has nothing to
+
+40
+00:02:42.366 --> 00:02:43.096
+delete.
+
+41
+00:02:45.430 --> 00:02:50.310
+Next: what happens to a provider
+change, and to upstream's change,
+
+42
+00:02:50.310 --> 00:02:53.200
+between midnight and an image digest?
+
