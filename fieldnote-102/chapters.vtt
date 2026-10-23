@@ -1,0 +1,22 @@
+WEBVTT
+
+1
+00:00:13.248 --> 00:00:27.716
+The stack is AKS plus Azure data services.
+
+2
+00:00:27.716 --> 00:00:50.956
+Partition resources and shared resources.
+
+3
+00:00:50.956 --> 00:01:04.852
+The OSDU services run in one namespace behind one gateway.
+
+4
+00:01:04.852 --> 00:01:29.560
+Example: a partition lookup
+
+5
+00:01:29.560 --> 00:01:46.196
+Easy mistake: the stack is just AKS
+

@@ -1,0 +1,143 @@
+WEBVTT
+
+1
+00:00:05.290 --> 00:00:08.380
+Foundations. Anatomy of a stack.
+
+2
+00:00:09.398 --> 00:00:12.168
+What is actually running when
+someone says “the stack”?
+
+3
+00:00:13.758 --> 00:00:15.688
+A stack is a resource group:
+
+4
+00:00:15.758 --> 00:00:19.528
+AKS, plus the Azure data
+services around it.
+
+5
+00:00:19.838 --> 00:00:21.118
+Not the cluster alone.
+
+6
+00:00:21.118 --> 00:00:26.328
+spi up creates AKS and its
+Azure resources together.
+
+7
+00:00:28.506 --> 00:00:31.076
+Some of those resources
+belong to a partition,
+
+8
+00:00:31.146 --> 00:00:32.596
+and some are shared.
+
+9
+00:00:32.746 --> 00:00:36.026
+For the example partition,
+opendes, records,
+
+10
+00:00:36.026 --> 00:00:39.716
+blobs, and events each have
+their own Azure resource:
+
+11
+00:00:40.106 --> 00:00:45.076
+a Cosmos DB account, a Storage
+account, and a Service Bus namespace.
+
+12
+00:00:45.426 --> 00:00:49.716
+Entitlements, identities, and Key
+Vault are shared by the environment.
+
+13
+00:00:52.146 --> 00:00:56.066
+Inside AKS, the OSDU services
+run in one namespace,
+
+14
+00:00:56.066 --> 00:01:00.426
+one image each. Every request reaches
+them through the Istio gateway,
+
+15
+00:01:00.426 --> 00:01:03.596
+which routes each API path to its service.
+
+16
+00:01:05.842 --> 00:01:07.212
+Follow one request.
+
+17
+00:01:07.442 --> 00:01:12.482
+A client asks for the opendes partition,
+with a bearer token and a data partition
+
+18
+00:01:12.482 --> 00:01:15.762
+id. The gateway routes it
+to the Partition service,
+
+19
+00:01:15.762 --> 00:01:19.452
+which identifies the caller
+and reads stored configuration:
+
+20
+00:01:19.602 --> 00:01:21.452
+tables in common Storage.
+
+21
+00:01:21.602 --> 00:01:25.092
+This lookup never touches
+the partition's Cosmos DB,
+
+22
+00:01:25.362 --> 00:01:28.252
+blob Storage, or Service Bus.
+
+23
+00:01:30.230 --> 00:01:31.390
+An easy mistake:
+
+24
+00:01:31.390 --> 00:01:33.880
+the stack is just AKS.
+
+25
+00:01:34.110 --> 00:01:39.790
+AKS runs the Kubernetes workloads, but
+the same resource group holds Azure data
+
+26
+00:01:39.790 --> 00:01:41.960
+services outside the cluster.
+
+27
+00:01:42.430 --> 00:01:45.240
+To check, list the resources in the group.
+
+28
+00:01:47.186 --> 00:01:48.396
+So now you can say:
+
+29
+00:01:48.626 --> 00:01:53.596
+a stack is one resource group, with
+partition and shared resources,
+
+30
+00:01:53.626 --> 00:01:56.396
+and one gateway in front of its services.
+
+31
+00:01:58.994 --> 00:02:02.364
+Next: where does the Azure
+code live in a service?
+
