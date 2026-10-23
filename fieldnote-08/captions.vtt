@@ -1,0 +1,249 @@
+WEBVTT
+
+1
+00:00:00.800 --> 00:00:03.560
+Thirteen services and the schema loader.
+
+2
+00:00:03.870 --> 00:00:05.720
+Every source reads azure.
+
+3
+00:00:05.950 --> 00:00:08.600
+None of these came from
+the community registry.
+
+4
+00:00:08.910 --> 00:00:13.080
+Each one is a build of a
+service fork's main branch.
+
+5
+00:00:13.790 --> 00:00:15.560
+So whose image is running?
+
+6
+00:00:15.950 --> 00:00:17.000
+Follow one.
+
+7
+00:00:23.940 --> 00:00:25.810
+Fieldnote eight.
+
+8
+00:00:25.810 --> 00:00:27.420
+Whose image is running?
+
+9
+00:00:28.494 --> 00:00:31.734
+Which build does each service
+run, where did it come from,
+
+10
+00:00:31.734 --> 00:00:33.424
+and how long can it stay?
+
+11
+00:00:34.990 --> 00:00:38.670
+Every service runs an image built
+from its Azure fork's main branch.
+
+12
+00:00:38.670 --> 00:00:42.840
+spi up chooses it once,
+the image lock records it,
+
+13
+00:00:43.150 --> 00:00:45.880
+and it stays until a refresh moves it.
+
+14
+00:00:47.646 --> 00:00:53.806
+At spi up, the CLI asks GHCR,
+for each of thirteen forks,
+
+15
+00:00:53.806 --> 00:00:58.856
+which digest main-snapshot names, and
+records it under the commit's sha tag.
+
+16
+00:00:59.486 --> 00:01:02.616
+Schema's loader comes from
+the same commit as schema.
+
+17
+00:01:03.326 --> 00:01:05.976
+The community registry is not a source:
+
+18
+00:01:06.126 --> 00:01:08.936
+its images don't carry the Azure provider.
+
+19
+00:01:09.526 --> 00:01:13.256
+An environment can record a
+trusted mirror for one service.
+
+20
+00:01:13.486 --> 00:01:15.016
+This one had none.
+
+21
+00:01:17.282 --> 00:01:20.412
+Partition's tag names a
+commit on its fork's main,
+
+22
+00:01:20.442 --> 00:01:23.612
+an upstream integration
+merged that same day.
+
+23
+00:01:24.562 --> 00:01:30.242
+On GHCR, that tag points at one
+digest, and that digest is what both
+
+24
+00:01:30.242 --> 00:01:31.932
+partition pods run.
+
+25
+00:01:32.882 --> 00:01:36.082
+A tag can move. The lock keeps the digest,
+
+26
+00:01:36.082 --> 00:01:37.772
+and the build date beside it.
+
+27
+00:01:40.286 --> 00:01:42.536
+That image does not move on its own.
+
+28
+00:01:42.766 --> 00:01:47.486
+Every Monday, each fork prunes
+sha images older than thirty days,
+
+29
+00:01:47.486 --> 00:01:49.576
+once main has built past them.
+
+30
+00:01:49.886 --> 00:01:56.136
+So spi info and spi status mark a canonical
+built more than twenty-one days ago,
+
+31
+00:01:56.166 --> 00:01:58.136
+which leaves nine days.
+
+32
+00:01:58.686 --> 00:02:03.846
+On the shared environment, a run every
+weekday morning refreshes every service,
+
+33
+00:02:03.846 --> 00:02:05.656
+an hour ahead of Monday's prune.
+
+34
+00:02:06.046 --> 00:02:07.576
+On yours, that's you:
+
+35
+00:02:07.886 --> 00:02:09.976
+spi service refresh.
+
+36
+00:02:12.458 --> 00:02:14.228
+Follow partition's row home.
+
+37
+00:02:14.618 --> 00:02:17.188
+spi info reads the image lock.
+
+38
+00:02:17.418 --> 00:02:20.788
+The lock holds the
+repository, the commit's tag,
+
+39
+00:02:20.938 --> 00:02:23.108
+the digest and the build date.
+
+40
+00:02:23.578 --> 00:02:27.178
+On GHCR, that tag points
+at the same digest.
+
+41
+00:02:27.178 --> 00:02:29.418
+The tag names a merge on the fork's main.
+
+42
+00:02:29.418 --> 00:02:33.268
+And spi status shows both
+pods running that digest.
+
+43
+00:02:33.498 --> 00:02:37.828
+Whose image? The fork's, from
+one commit you can read.
+
+44
+00:02:40.886 --> 00:02:42.216
+An easy mistake:
+
+45
+00:02:42.366 --> 00:02:45.736
+my environment picks up the
+fork's new main on its own.
+
+46
+00:02:46.046 --> 00:02:51.646
+It doesn't. spi up chooses images once,
+and running it again keeps the lock unless
+
+47
+00:02:51.646 --> 00:02:53.176
+you ask for a refresh.
+
+48
+00:02:53.646 --> 00:02:56.776
+Only the shared environment
+refreshes on a schedule.
+
+49
+00:02:57.086 --> 00:03:00.606
+On yours, read the built date in spi info,
+
+50
+00:03:00.606 --> 00:03:03.736
+and refresh before the mark
+becomes a deleted image.
+
+51
+00:03:06.386 --> 00:03:07.516
+So now you can say:
+
+52
+00:03:07.746 --> 00:03:12.316
+each service runs its Azure
+fork's main image from GHCR.
+
+53
+00:03:12.786 --> 00:03:17.036
+The lock ties each tag to one
+fork commit and one digest.
+
+54
+00:03:17.506 --> 00:03:21.756
+And a canonical image ages toward
+retention until a refresh moves it.
+
+55
+00:03:24.122 --> 00:03:27.492
+Next: who does the stack think
+you are, and what may you do?
+

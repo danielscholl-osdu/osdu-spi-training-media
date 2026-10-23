@@ -1,0 +1,22 @@
+WEBVTT
+
+1
+00:00:46.936 --> 00:01:16.572
+Each service runs its Azure fork's main image from GHCR.
+
+2
+00:01:16.572 --> 00:01:39.496
+The lock ties each tag to one fork commit and one digest.
+
+3
+00:01:39.496 --> 00:02:11.748
+A canonical image ages toward retention until a refresh moves it.
+
+4
+00:02:11.748 --> 00:02:40.216
+Example: Follow partition's tag home
+
+5
+00:02:40.216 --> 00:03:05.476
+Easy mistake: My environment picks up the fork's new main on its own.
+
