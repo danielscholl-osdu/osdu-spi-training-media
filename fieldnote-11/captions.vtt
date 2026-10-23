@@ -1,0 +1,293 @@
+WEBVTT
+
+1
+00:00:00.950 --> 00:00:05.080
+One command, run as me
+against a fresh environment.
+
+2
+00:00:05.230 --> 00:00:11.240
+Two workflow runs passed, and Storage now
+holds a record whose createUser is me.
+
+3
+00:00:11.550 --> 00:00:13.400
+Not the platform's identity.
+
+4
+00:00:13.550 --> 00:00:16.600
+Mine. Here's how it got there.
+
+5
+00:00:23.524 --> 00:00:25.314
+Fieldnote eleven.
+
+6
+00:00:25.314 --> 00:00:26.764
+On behalf of you.
+
+7
+00:00:27.832 --> 00:00:32.002
+How does a DAG reach the stack,
+who does each task act as,
+
+8
+00:00:32.232 --> 00:00:34.562
+and how do you know it stored anything?
+
+9
+00:00:35.954 --> 00:00:40.044
+In the core profile, Airflow runs
+the community's ingestion DAGs.
+
+10
+00:00:40.354 --> 00:00:44.354
+The stack decides which files
+load, registers them with Workflow,
+
+11
+00:00:44.354 --> 00:00:47.724
+and runs each task on behalf
+of whoever started it.
+
+12
+00:00:47.954 --> 00:00:50.124
+Then one command proves the whole path.
+
+13
+00:00:51.874 --> 00:00:54.274
+The stack's catalog names two families:
+
+14
+00:00:54.274 --> 00:00:58.274
+its own smoke DAGs, and the
+community's manifest ingestion,
+
+15
+00:00:58.274 --> 00:01:02.364
+pinned to a full commit with
+a SHA-256 for every file.
+
+16
+00:01:02.994 --> 00:01:06.204
+At each scheduler start, a
+loader fetches that commit,
+
+17
+00:01:06.274 --> 00:01:10.444
+checks every hash, and stages
+only the files the catalog lists.
+
+18
+00:01:10.994 --> 00:01:14.114
+The Python libraries
+install hash-locked too.
+
+19
+00:01:14.114 --> 00:01:17.154
+A file that doesn't match
+holds the new pod in init,
+
+20
+00:01:17.154 --> 00:01:19.084
+while the old pod keeps serving.
+
+21
+00:01:19.634 --> 00:01:22.124
+So a catalog edit approves code to run.
+
+22
+00:01:24.582 --> 00:01:28.992
+After Airflow and init, Flux's
+sixth layer runs a registration Job.
+
+23
+00:01:29.302 --> 00:01:33.152
+It waits until Airflow has parsed
+exactly the declared DAGs,
+
+24
+00:01:33.222 --> 00:01:38.662
+with no import errors, registers each
+one with Workflow as a system workflow,
+
+25
+00:01:38.662 --> 00:01:40.112
+and unpauses it.
+
+26
+00:01:40.262 --> 00:01:41.872
+It never deletes anything.
+
+27
+00:01:42.262 --> 00:01:46.782
+That layer does not gate Deployable, so an
+environment can be ready to deploy before
+
+28
+00:01:46.782 --> 00:01:48.512
+ingestion is ready to run.
+
+29
+00:01:51.026 --> 00:01:52.396
+Follow who acts.
+
+30
+00:01:52.546 --> 00:01:54.956
+You call Workflow with your own token.
+
+31
+00:01:55.346 --> 00:02:00.396
+Workflow records you as the submitter,
+and refuses a user id in the request.
+
+32
+00:02:00.546 --> 00:02:05.436
+It reaches Airflow with its own login,
+which carries no OSDU authority.
+
+33
+00:02:06.226 --> 00:02:10.156
+The task then calls Storage
+as the stack's OSDU identity,
+
+34
+00:02:10.306 --> 00:02:12.636
+with an on-behalf-of header naming you.
+
+35
+00:02:13.266 --> 00:02:17.586
+Entitlements honours that only when the
+identity may delegate and you may be
+
+36
+00:02:17.586 --> 00:02:22.076
+impersonated. spi users
+gives that right to editors,
+
+37
+00:02:22.186 --> 00:02:24.636
+admins and ops, not viewers.
+
+38
+00:02:24.866 --> 00:02:29.036
+So the stored record's createUser
+is you, not the platform.
+
+39
+00:02:31.558 --> 00:02:32.888
+One command proves it.
+
+40
+00:02:33.198 --> 00:02:35.288
+spi test dags --as me.
+
+41
+00:02:35.758 --> 00:02:38.078
+Preflight checks that
+you may act for others,
+
+42
+00:02:38.078 --> 00:02:41.438
+that both DAGs are registered,
+that the schemas exist,
+
+43
+00:02:41.438 --> 00:02:46.168
+that the legal tag is valid, and that
+the record's ACL matches your domain.
+
+44
+00:02:46.558 --> 00:02:51.128
+Then Echo_DAG runs, and then
+Osdu_ingest with a one-record manifest.
+
+45
+00:02:51.518 --> 00:02:56.328
+Last, it reads the record back from
+Storage and checks that createUser is you.
+
+46
+00:02:56.798 --> 00:03:00.728
+With --report, the evidence
+lands on one page.
+
+47
+00:03:03.818 --> 00:03:04.978
+An easy mistake:
+
+48
+00:03:04.978 --> 00:03:07.788
+the run finished, so
+every record is stored.
+
+49
+00:03:08.178 --> 00:03:10.818
+When Storage refuses every
+record in a manifest,
+
+50
+00:03:10.818 --> 00:03:13.548
+Osdu_ingest fails the run.
+
+51
+00:03:13.818 --> 00:03:17.068
+When it refuses only some,
+the run still finishes.
+
+52
+00:03:17.218 --> 00:03:21.868
+Here, two records went in, and the
+second had an ACL in another domain.
+
+53
+00:03:22.018 --> 00:03:23.468
+The run finished.
+
+54
+00:03:23.618 --> 00:03:25.388
+The first record reads back.
+
+55
+00:03:25.458 --> 00:03:30.098
+The second is not found, and the only trace
+is a skipped-entities report in the task
+
+56
+00:03:30.098 --> 00:03:34.588
+log. So read back every record
+you sent, not the run's state.
+
+57
+00:03:34.858 --> 00:03:40.578
+That's also why the check refuses a bad
+legal tag or a foreign ACL before it submits
+
+58
+00:03:40.578 --> 00:03:41.468
+anything.
+
+59
+00:03:43.966 --> 00:03:45.256
+So now you can say:
+
+60
+00:03:45.406 --> 00:03:48.366
+a DAG reaches Airflow
+from a reviewed catalog,
+
+61
+00:03:48.366 --> 00:03:53.416
+hash by hash. Registration comes
+later, and does not gate Deployable.
+
+62
+00:03:53.726 --> 00:03:56.296
+And each task writes on
+behalf of the caller.
+
+63
+00:03:58.662 --> 00:04:01.872
+Next: how do you prove a
+service from your desk?
+

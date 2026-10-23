@@ -1,0 +1,22 @@
+WEBVTT
+
+1
+00:00:51.164 --> 00:01:23.792
+A DAG reaches Airflow from a reviewed catalog, hash by hash.
+
+2
+00:01:23.792 --> 00:01:50.316
+Registration comes later, and it does not gate Deployable.
+
+3
+00:01:50.316 --> 00:02:30.808
+Each task writes on behalf of the caller.
+
+4
+00:02:30.808 --> 00:03:03.148
+Proof: spi test dags, as me
+
+5
+00:03:03.148 --> 00:03:43.056
+Easy mistake: the run finished, so every record is stored
+
