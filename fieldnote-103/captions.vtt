@@ -1,0 +1,118 @@
+WEBVTT
+
+1
+00:00:05.700 --> 00:00:08.390
+Foundations. The provider inside.
+
+2
+00:00:09.392 --> 00:00:11.922
+Where does the Azure
+code live in a service?
+
+3
+00:00:13.394 --> 00:00:15.004
+Open the partition service.
+
+4
+00:00:15.394 --> 00:00:18.524
+Its shared code is the
+same in every cloud,
+
+5
+00:00:18.594 --> 00:00:21.164
+and it calls a Service Provider Interface.
+
+6
+00:00:21.474 --> 00:00:24.764
+The community has its own
+implementation of that interface.
+
+7
+00:00:24.914 --> 00:00:29.644
+The Azure implementation connects
+the same interface to Azure services.
+
+8
+00:00:31.926 --> 00:00:35.696
+The interface and its
+implementation ship in one image.
+
+9
+00:00:35.846 --> 00:00:40.096
+The build packs the shared code
+and the Azure module into one JAR,
+
+10
+00:00:40.246 --> 00:00:42.496
+and the image carries that JAR.
+
+11
+00:00:43.126 --> 00:00:47.296
+So crossing the interface is a
+method call inside one process.
+
+12
+00:00:47.366 --> 00:00:49.696
+There is no network hop between them.
+
+13
+00:00:51.762 --> 00:00:54.802
+The Azure implementation
+lives in the service's fork,
+
+14
+00:00:54.802 --> 00:00:57.852
+in its own provider folder
+beside the shared code.
+
+15
+00:01:01.030 --> 00:01:03.200
+Follow the same lookup
+through the provider.
+
+16
+00:01:03.270 --> 00:01:06.710
+The request reaches common
+code, which calls the interface,
+
+17
+00:01:06.710 --> 00:01:08.160
+with no network hop.
+
+18
+00:01:08.870 --> 00:01:13.120
+The Azure implementation checks
+its Redis cache inside AKS,
+
+19
+00:01:13.190 --> 00:01:18.150
+and on a miss reads stored configuration
+from Table Storage outside AKS,
+
+20
+00:01:18.150 --> 00:01:20.640
+never the partition's own resources.
+
+21
+00:01:22.954 --> 00:01:24.244
+So now you can say:
+
+22
+00:01:24.394 --> 00:01:27.514
+the Azure code is a provider
+behind an interface,
+
+23
+00:01:27.514 --> 00:01:30.244
+shipped in the same image
+as the code that calls it,
+
+24
+00:01:30.314 --> 00:01:32.324
+and kept in the service's fork.
+
+25
+00:01:34.890 --> 00:01:38.340
+Next: how does a change
+reach a running service?
+

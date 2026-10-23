@@ -1,0 +1,18 @@
+WEBVTT
+
+1
+00:00:12.604 --> 00:00:31.216
+Common code calls Azure through a provider interface.
+
+2
+00:00:31.216 --> 00:00:51.052
+The interface and implementation ship in one image.
+
+3
+00:00:51.052 --> 00:01:00.040
+The Azure code lives in the service’s fork.
+
+4
+00:01:00.040 --> 00:01:22.044
+Example: Follow the same lookup through the provider
+
