@@ -5,18 +5,18 @@ WEBVTT
 CLI creates; Flux assembles; controllers keep workloads healthy.
 
 2
-00:00:46.322 --> 00:01:11.566
+00:00:46.322 --> 00:01:11.374
 CLI success is not API readiness.
 
 3
-00:01:11.566 --> 00:01:24.090
+00:01:11.374 --> 00:01:23.898
 Teardown removes data but preserves identities and names.
 
 4
-00:01:24.090 --> 00:01:56.766
+00:01:23.898 --> 00:01:56.574
 Example: Before the lookup can answer
 
 5
-00:01:56.766 --> 00:02:21.426
+00:01:56.574 --> 00:02:21.234
 Easy mistake: GitOps is suspended, so nothing changes
 
