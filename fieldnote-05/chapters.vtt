@@ -1,0 +1,22 @@
+WEBVTT
+
+1
+00:00:35.556 --> 00:01:07.160
+A sync is a generated tree plus one PR and one tracking issue; upstream is never merged in as text, and the generated commit lands through a reviewed sync PR. The cascade merges main first, then fork_upstream, into the workspace.
+
+2
+00:01:07.160 --> 00:01:26.548
+The labels on the tracking issue are the state: cascade-active, cascade-blocked, cascade-failed, validated. A blocked cascade is run again after a provider change on fork_integration; removing human-required is how a failed one retries.
+
+3
+00:01:26.548 --> 00:01:53.224
+The integration PR and the version PR are different PRs. Validation runs on PRs and on pushes to main and fork_integration, pushes a digest for every eligible commit, and the stack is borrowed for it before any release exists.
+
+4
+00:01:53.224 --> 00:02:20.140
+Example: The cache fallback fix meets the upstream change
+
+5
+00:02:20.140 --> 00:02:42.888
+Easy mistake: a release builds a fresh image for the version tag
+

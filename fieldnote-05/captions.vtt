@@ -1,0 +1,236 @@
+WEBVTT
+
+1
+00:00:04.800 --> 00:00:08.680
+Fieldnote five. A day in the fork.
+
+2
+00:00:09.690 --> 00:00:13.410
+What happens to a provider
+change, and to upstream's change,
+
+3
+00:00:13.410 --> 00:00:16.140
+between midnight and an image digest?
+
+4
+00:00:17.658 --> 00:00:20.548
+From an upstream update
+to a candidate image.
+
+5
+00:00:20.778 --> 00:00:23.268
+Upstream is regenerated at midnight.
+
+6
+00:00:23.418 --> 00:00:26.068
+The cascade carries it into the workspace.
+
+7
+00:00:26.138 --> 00:00:27.508
+A person approves.
+
+8
+00:00:27.578 --> 00:00:31.668
+Every eligible commit gets an image
+digest and a turn in the stack.
+
+9
+00:00:31.738 --> 00:00:34.548
+And nothing here is a
+merge you run by hand.
+
+10
+00:00:36.266 --> 00:00:41.236
+A sync is a generated tree, plus one
+pull request and one tracking issue.
+
+11
+00:00:41.786 --> 00:00:44.196
+Upstream doesn't carry the Azure provider.
+
+12
+00:00:44.586 --> 00:00:50.266
+The fork keeps it, so a sync brings
+the community's changes without ever
+
+13
+00:00:50.266 --> 00:00:52.116
+touching the Azure paths.
+
+14
+00:00:52.666 --> 00:00:55.476
+Upstream is never merged in as text.
+
+15
+00:00:55.706 --> 00:00:59.476
+The generated commit lands through
+a reviewed sync pull request.
+
+16
+00:00:59.626 --> 00:01:04.186
+Then the cascade merges main
+first, then fork_upstream,
+
+17
+00:01:04.186 --> 00:01:05.636
+into the workspace.
+
+18
+00:01:07.870 --> 00:01:10.190
+The labels on the tracking
+issue are the state:
+
+19
+00:01:10.190 --> 00:01:14.910
+cascade-active, cascade-blocked,
+cascade-failed,
+
+20
+00:01:14.910 --> 00:01:20.830
+validated. A blocked cascade runs again
+after a provider change on fork_integration.
+
+21
+00:01:20.830 --> 00:01:24.998
+A failed one retries when
+someone removes human-required.
+
+22
+00:01:27.258 --> 00:01:30.298
+The integration pull request and the
+version pull request are different pull
+
+23
+00:01:30.298 --> 00:01:33.578
+requests. Validation
+runs on pull requests,
+
+24
+00:01:33.578 --> 00:01:36.538
+and on pushes to main
+and fork_integration.
+
+25
+00:01:36.538 --> 00:01:39.258
+It pushes a digest for
+every eligible commit,
+
+26
+00:01:39.258 --> 00:01:42.378
+and the stack is borrowed for
+it before any release exists.
+
+27
+00:01:42.378 --> 00:01:47.428
+Thirteen service forks work this
+way, each in its own service's slot.
+
+28
+00:01:47.498 --> 00:01:51.668
+And the image a merge to main pushes
+is the one that slot follows next.
+
+29
+00:01:53.934 --> 00:01:56.654
+Follow the two changes
+from Fieldnote four.
+
+30
+00:01:56.654 --> 00:01:59.694
+The sync pull request
+brings upstream's change,
+
+31
+00:01:59.694 --> 00:02:03.384
+generated. The cascade
+compiles both together.
+
+32
+00:02:03.614 --> 00:02:06.664
+A person approves the
+integration pull request.
+
+33
+00:02:06.814 --> 00:02:11.304
+Validation pushes a candidate digest,
+and it gets a turn in the stack,
+
+34
+00:02:11.374 --> 00:02:13.464
+which is what Fieldnote six follows.
+
+35
+00:02:13.534 --> 00:02:16.344
+The cache fix and its unit tests are real;
+
+36
+00:02:16.414 --> 00:02:18.584
+the acceptance run is illustrative.
+
+37
+00:02:20.810 --> 00:02:22.140
+An easy mistake:
+
+38
+00:02:22.290 --> 00:02:25.340
+a release builds a fresh
+image for the version tag.
+
+39
+00:02:25.570 --> 00:02:29.260
+Validation already pushed an immutable
+image for the release commit.
+
+40
+00:02:29.410 --> 00:02:33.660
+The release workflow waits for that
+image and adds the version tag to it.
+
+41
+00:02:34.130 --> 00:02:37.580
+The bytes on the merge commit are
+the bytes that get the version.
+
+42
+00:02:37.730 --> 00:02:39.900
+To check, read the package's tags.
+
+43
+00:02:43.878 --> 00:02:45.088
+So now you can say:
+
+44
+00:02:45.478 --> 00:02:48.928
+a sync is a generated tree
+and a reviewed pull request,
+
+45
+00:02:48.998 --> 00:02:51.728
+and the cascade carries
+it into the workspace.
+
+46
+00:02:52.038 --> 00:02:54.768
+The labels on the tracking
+issue are the state.
+
+47
+00:02:54.918 --> 00:02:59.158
+And every eligible commit gets a
+digest and a turn in the stack,
+
+48
+00:02:59.158 --> 00:03:01.568
+before any release exists.
+
+49
+00:03:03.918 --> 00:03:07.688
+Next: how does a candidate
+image reach a running stack,
+
+50
+00:03:07.878 --> 00:03:12.088
+what proves it, and how is the
+temporary test deployment restored?
+
