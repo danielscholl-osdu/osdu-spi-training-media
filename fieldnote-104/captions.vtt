@@ -1,0 +1,163 @@
+WEBVTT
+
+1
+00:00:05.820 --> 00:00:08.590
+Foundations. The line.
+
+2
+00:00:09.458 --> 00:00:11.628
+How does a change reach a running service?
+
+3
+00:00:13.234 --> 00:00:15.084
+Start with the partition fork.
+
+4
+00:00:15.474 --> 00:00:17.404
+It owns a short list of paths:
+
+5
+00:00:17.474 --> 00:00:22.684
+the Azure provider, its Azure tests,
+and a few files that describe the fork.
+
+6
+00:00:23.394 --> 00:00:25.724
+Its workflows come from a template.
+
+7
+00:00:26.034 --> 00:00:30.444
+Everything else is the community's code,
+regenerated from upstream every day.
+
+8
+00:00:30.994 --> 00:00:33.404
+The fork's own paths stay put.
+
+9
+00:00:35.654 --> 00:00:39.184
+A change reaches a running
+service through six stations.
+
+10
+00:00:39.334 --> 00:00:41.744
+Upstream, where the community works.
+
+11
+00:00:42.214 --> 00:00:46.624
+Sync, which brings upstream's
+changes into the fork every day.
+
+12
+00:00:47.014 --> 00:00:50.384
+Cascade, which builds them
+with the fork's own code.
+
+13
+00:00:50.774 --> 00:00:53.584
+Main, the fork's protected branch.
+
+14
+00:00:53.974 --> 00:00:56.544
+And release, which gives it a version.
+
+15
+00:00:57.014 --> 00:01:01.424
+Beside them is the lane, where
+a new image runs in a stack.
+
+16
+00:01:01.894 --> 00:01:05.094
+Every service fork comes
+from that one template,
+
+17
+00:01:05.094 --> 00:01:07.974
+so every fork has the same six.
+
+18
+00:01:07.974 --> 00:01:10.624
+A fork's own change joins at main.
+
+19
+00:01:12.906 --> 00:01:17.146
+Every eligible commit gets an image,
+and a turn in a running stack,
+
+20
+00:01:17.146 --> 00:01:19.236
+before any release exists.
+
+21
+00:01:19.466 --> 00:01:22.436
+In the lane, the new
+image runs in the stack,
+
+22
+00:01:22.586 --> 00:01:24.756
+and the service's own tests check it.
+
+23
+00:01:25.226 --> 00:01:28.596
+So a release only tags an
+image that's already there.
+
+24
+00:01:28.906 --> 00:01:30.676
+Nothing is rebuilt.
+
+25
+00:01:33.326 --> 00:01:36.216
+Follow one upstream change along the line.
+
+26
+00:01:36.366 --> 00:01:38.776
+It lands in the community's repository.
+
+27
+00:01:39.086 --> 00:01:43.016
+At midnight UTC, sync
+proposes it to the fork.
+
+28
+00:01:43.246 --> 00:01:45.726
+Cascade builds it with the Azure provider,
+
+29
+00:01:45.726 --> 00:01:47.896
+and its image takes a turn in the lane.
+
+30
+00:01:48.126 --> 00:01:52.216
+It reaches main, and the image
+built from main takes its turn too.
+
+31
+00:01:52.686 --> 00:01:55.656
+Main's image is the one
+a stack runs by default.
+
+32
+00:01:55.966 --> 00:01:59.896
+A release, when one comes, tags
+an image that's already there.
+
+33
+00:02:02.162 --> 00:02:03.532
+So now you can say:
+
+34
+00:02:03.762 --> 00:02:09.282
+a fork keeps a few paths of its own,
+every fork has the same six stations,
+
+35
+00:02:09.282 --> 00:02:13.372
+and a change's image runs in a
+stack before a release ever tags it.
+
+36
+00:02:15.858 --> 00:02:19.148
+Next: who does what,
+and which path is mine?
+
