@@ -1,0 +1,160 @@
+WEBVTT
+
+1
+00:00:05.500 --> 00:00:08.390
+Foundations. Two kinds of work.
+
+2
+00:00:09.480 --> 00:00:11.970
+Who does what, and which path is mine?
+
+3
+00:00:13.512 --> 00:00:15.522
+The work here comes in two kinds.
+
+4
+00:00:15.592 --> 00:00:17.832
+The line is what carries a change:
+
+5
+00:00:17.832 --> 00:00:20.792
+the template and its
+workflows, the shared stack,
+
+6
+00:00:20.792 --> 00:00:22.642
+and the automation that runs them.
+
+7
+00:00:23.352 --> 00:00:25.442
+The product is what rides on the line:
+
+8
+00:00:25.512 --> 00:00:29.272
+each service's code, its
+Azure provider, its tests,
+
+9
+00:00:29.272 --> 00:00:32.002
+and what the service promises its callers.
+
+10
+00:00:34.300 --> 00:00:36.150
+A lot of the work opens itself.
+
+11
+00:00:36.300 --> 00:00:40.630
+Automation opens the sync, cascade,
+and release pull requests,
+
+12
+00:00:40.700 --> 00:00:43.830
+and the ones that keep dependencies
+and the template in step.
+
+13
+00:00:44.220 --> 00:00:46.870
+Copilot may review a pull request first.
+
+14
+00:00:47.100 --> 00:00:50.150
+But nothing reaches main until
+a code owner approves it,
+
+15
+00:00:50.300 --> 00:00:53.510
+after its last push, with
+the required checks green.
+
+16
+00:00:53.900 --> 00:00:58.550
+And when the line can't go on alone, it
+stops and opens an issue for a person.
+
+17
+00:01:00.816 --> 00:01:03.536
+If you change what a
+service does, its features,
+
+18
+00:01:03.536 --> 00:01:06.856
+its provider, its tests,
+that's service work,
+
+19
+00:01:06.856 --> 00:01:08.746
+and the service path is yours.
+
+20
+00:01:08.976 --> 00:01:12.176
+If you change what carries
+every service, the stack,
+
+21
+00:01:12.176 --> 00:01:16.106
+the template, the shared
+environment, that's platform work,
+
+22
+00:01:16.296 --> 00:01:18.986
+and the platform path is yours.
+
+23
+00:01:19.216 --> 00:01:22.026
+One person can do both in the same week.
+
+24
+00:01:24.652 --> 00:01:26.542
+Take one upstream change again.
+
+25
+00:01:26.772 --> 00:01:31.102
+At midnight, sync opens its pull
+request, and a person merges it.
+
+26
+00:01:31.252 --> 00:01:36.542
+Cascade opens the next one, into main,
+and it waits for a code owner's approval.
+
+27
+00:01:36.692 --> 00:01:40.702
+The release pull request waits until
+a person decides the version is ready.
+
+28
+00:01:40.932 --> 00:01:42.542
+Automation did the work.
+
+29
+00:01:42.692 --> 00:01:44.382
+A person made each call.
+
+30
+00:01:46.680 --> 00:01:47.810
+So now you can say:
+
+31
+00:01:47.960 --> 00:01:51.970
+the line carries the product,
+automation opens much of the work,
+
+32
+00:01:52.040 --> 00:01:56.370
+a person approves what reaches
+main, and your work picks your path.
+
+33
+00:01:58.920 --> 00:02:00.850
+Next, take your path.
+
+34
+00:02:01.240 --> 00:02:03.970
+Service work starts with
+your own environment.
+
+35
+00:02:04.120 --> 00:02:07.250
+Platform work starts with
+how it comes to life.
+
