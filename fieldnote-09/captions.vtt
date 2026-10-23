@@ -1,0 +1,244 @@
+WEBVTT
+
+1
+00:00:00.990 --> 00:00:04.440
+My own token, against
+the entitlements API.
+
+2
+00:00:04.750 --> 00:00:08.350
+401. One command later, the same call:
+
+3
+00:00:08.350 --> 00:00:12.200
+200. Nothing changed in the token.
+
+4
+00:00:12.270 --> 00:00:15.320
+Something changed in who
+the stack thinks I am.
+
+5
+00:00:21.860 --> 00:00:25.020
+Fieldnote nine. Who is asking.
+
+6
+00:00:26.054 --> 00:00:28.864
+Who does the stack think you
+are, and what may you do?
+
+7
+00:00:30.438 --> 00:00:32.928
+Your own Azure token gets
+you through the mesh.
+
+8
+00:00:33.238 --> 00:00:36.198
+spi users puts you in entitlements groups,
+
+9
+00:00:36.198 --> 00:00:38.678
+and the role you choose
+decides what you may do,
+
+10
+00:00:38.678 --> 00:00:41.168
+including whether
+Workflow may act for you.
+
+11
+00:00:43.162 --> 00:00:47.332
+spi token --me prints
+your own Azure token.
+
+12
+00:00:47.722 --> 00:00:52.122
+The mesh accepts its issuer, and the
+sidecar in front of each service writes your
+
+13
+00:00:52.122 --> 00:00:53.732
+unique_name as the caller.
+
+14
+00:00:54.042 --> 00:00:55.882
+Then entitlements looks you up.
+
+15
+00:00:55.882 --> 00:00:59.562
+Bring-up seeded three
+identities, the workload,
+
+16
+00:00:59.562 --> 00:01:03.132
+the deploy identity and the
+member, and nobody else.
+
+17
+00:01:03.322 --> 00:01:09.202
+So you get 401. Plain spi token
+mints the deploy identity instead,
+
+18
+00:01:09.202 --> 00:01:10.842
+which is why it always worked:
+
+19
+00:01:10.842 --> 00:01:12.852
+every call was the platform's.
+
+20
+00:01:15.086 --> 00:01:20.766
+spi users add --me reads your token
+and applies the mesh's own claim
+
+21
+00:01:20.766 --> 00:01:23.896
+order, so it stores the
+id entitlements will see.
+
+22
+00:01:24.606 --> 00:01:28.216
+The deploy identity writes the
+groups, because it sits in ops.
+
+23
+00:01:28.606 --> 00:01:31.166
+Then the command calls
+entitlements with your token,
+
+24
+00:01:31.166 --> 00:01:33.016
+and keeps trying for up to a minute.
+
+25
+00:01:33.246 --> 00:01:37.416
+Here, it answered, and the
+same curl returned 200.
+
+26
+00:01:39.866 --> 00:01:42.196
+A role is a preset of groups.
+
+27
+00:01:42.746 --> 00:01:45.396
+Viewer is users and datalake viewers.
+
+28
+00:01:45.866 --> 00:01:48.906
+Editor, admin and ops
+each add impersonation,
+
+29
+00:01:48.906 --> 00:01:52.916
+which lets the stack's OSDU identity
+act for you through Workflow.
+
+30
+00:01:53.786 --> 00:01:57.706
+As a viewer, the ingestion smoke
+refused before any run started:
+
+31
+00:01:57.706 --> 00:01:59.396
+impersonation missing.
+
+32
+00:01:59.946 --> 00:02:02.276
+As an editor, it can run as you.
+
+33
+00:02:04.854 --> 00:02:06.144
+Follow your own call.
+
+34
+00:02:06.294 --> 00:02:10.694
+Your token passes the mesh, and the
+sidecar writes your unique_name.
+
+35
+00:02:10.694 --> 00:02:13.984
+Entitlements finds no group, and refuses.
+
+36
+00:02:14.134 --> 00:02:17.414
+spi users add puts you in
+users and a role's groups,
+
+37
+00:02:17.414 --> 00:02:20.864
+written by the deploy identity,
+and checks with your token.
+
+38
+00:02:21.374 --> 00:02:23.504
+Entitlements finds you now.
+
+39
+00:02:23.894 --> 00:02:27.504
+Same token, same call, 200.
+
+40
+00:02:30.298 --> 00:02:31.548
+An easy mistake:
+
+41
+00:02:31.618 --> 00:02:35.378
+running spi users add again
+adds to the role I hold.
+
+42
+00:02:35.378 --> 00:02:39.228
+It replaces it. Here,
+viewer became editor.
+
+43
+00:02:39.298 --> 00:02:42.978
+Users stayed. Editors and
+impersonation were added,
+
+44
+00:02:42.978 --> 00:02:45.068
+and datalake viewers was removed.
+
+45
+00:02:45.538 --> 00:02:48.258
+Going back to viewer
+removes impersonation too,
+
+46
+00:02:48.258 --> 00:02:50.268
+and ingestion as you stops.
+
+47
+00:02:50.498 --> 00:02:52.748
+Check with spi users list.
+
+48
+00:02:55.334 --> 00:02:56.624
+So now you can say:
+
+49
+00:02:56.774 --> 00:03:01.504
+your own token passes the
+mesh, and entitlements decides.
+
+50
+00:03:02.054 --> 00:03:06.384
+spi users stores the id the
+mesh writes, and proves it.
+
+51
+00:03:06.534 --> 00:03:10.704
+And only editor, admin and
+ops can run ingestion as you.
+
+52
+00:03:13.166 --> 00:03:17.566
+Next: when is a new environment
+ready, open for deploys,
+
+53
+00:03:17.566 --> 00:03:18.936
+and holding data?
+
