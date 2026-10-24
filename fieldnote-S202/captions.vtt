@@ -1,0 +1,161 @@
+WEBVTT
+
+1
+00:00:00.990 --> 00:00:04.440
+My own token, against
+the entitlements API.
+
+2
+00:00:04.750 --> 00:00:08.350
+401. One command later, the same call:
+
+3
+00:00:08.350 --> 00:00:12.200
+200. Nothing changed in the token.
+
+4
+00:00:12.270 --> 00:00:15.320
+Something changed in who
+the stack thinks I am.
+
+5
+00:00:21.970 --> 00:00:25.100
+Service path. Who is asking.
+
+6
+00:00:26.206 --> 00:00:28.776
+Who does the stack think you are?
+
+7
+00:00:30.184 --> 00:00:34.514
+spi token --me prints
+your own Azure token.
+
+8
+00:00:34.744 --> 00:00:37.634
+Your call comes in through
+the stack's one gateway.
+
+9
+00:00:37.864 --> 00:00:42.744
+The mesh accepts the token's issuer, and
+the sidecar in front of each service writes
+
+10
+00:00:42.744 --> 00:00:45.074
+your unique_name as the caller.
+
+11
+00:00:45.384 --> 00:00:49.074
+Then entitlements looks you up,
+and finds no groups for you.
+
+12
+00:00:49.544 --> 00:00:54.594
+So you get 401. Plain spi
+token calls as the platform,
+
+13
+00:00:54.744 --> 00:00:57.634
+not as you, which is why it always worked.
+
+14
+00:00:59.884 --> 00:01:05.884
+spi users add --me reads
+your token and stores
+
+15
+00:01:05.884 --> 00:01:08.054
+the id the mesh will write for you.
+
+16
+00:01:08.284 --> 00:01:12.534
+The platform writes your groups, and
+the command checks with your own token,
+
+17
+00:01:12.604 --> 00:01:14.294
+for up to a minute.
+
+18
+00:01:14.364 --> 00:01:19.174
+Here, it answered, and the
+same curl returned 200.
+
+19
+00:01:21.626 --> 00:01:25.876
+A role is a preset of groups,
+and you hold one at a time.
+
+20
+00:01:26.346 --> 00:01:29.716
+Viewer is users and datalake viewers.
+
+21
+00:01:30.266 --> 00:01:34.106
+Editor, admin and ops each
+add their own groups,
+
+22
+00:01:34.106 --> 00:01:35.476
+and impersonation.
+
+23
+00:01:36.026 --> 00:01:39.316
+Editor and above also
+let ingestion run as you,
+
+24
+00:01:39.546 --> 00:01:40.916
+which comes next.
+
+25
+00:01:43.278 --> 00:01:44.518
+An easy mistake:
+
+26
+00:01:44.518 --> 00:01:49.408
+running spi users add again
+adds to the role I hold.
+
+27
+00:01:49.558 --> 00:01:53.088
+It replaces it. Here,
+viewer became editor.
+
+28
+00:01:53.238 --> 00:01:56.608
+Users stayed. Editors and
+impersonation were added,
+
+29
+00:01:56.678 --> 00:01:59.008
+and datalake viewers was removed.
+
+30
+00:01:59.078 --> 00:02:02.048
+Going back to viewer
+removes impersonation too.
+
+31
+00:02:02.198 --> 00:02:04.608
+Check with spi users list.
+
+32
+00:02:07.226 --> 00:02:08.356
+So now you can say:
+
+33
+00:02:08.506 --> 00:02:12.196
+the mesh lets my token
+in, entitlements decides,
+
+34
+00:02:12.266 --> 00:02:15.156
+and my role is the one preset I last set.
+
+35
+00:02:17.442 --> 00:02:21.692
+Next: what does a new environment
+hold, and does ingestion work?
+
