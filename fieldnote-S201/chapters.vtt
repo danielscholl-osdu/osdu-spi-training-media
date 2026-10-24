@@ -1,18 +1,18 @@
 WEBVTT
 
 1
-00:00:20.560 --> 00:00:47.100
+00:00:11.314 --> 00:00:39.102
 Check first, then spi up builds your environment
 
 2
-00:00:47.100 --> 00:01:17.128
+00:00:39.102 --> 00:01:10.682
 spi up returns before the environment is usable; wait for Deployable
 
 3
-00:01:17.128 --> 00:01:38.884
+00:01:10.682 --> 00:01:32.582
 spi info names your endpoints, and spi down gives the environment back
 
 4
-00:01:38.884 --> 00:02:04.472
+00:01:32.582 --> 00:01:58.378
 Easy mistake: The command finished, so it is ready.
 
