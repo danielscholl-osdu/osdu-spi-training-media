@@ -1,14 +1,14 @@
 WEBVTT
 
 1
-00:00:24.658 --> 00:00:54.918
+00:00:12.966 --> 00:00:43.226
 A pull request's checks, the lane among them, and a code owner's approval
 
 2
-00:00:54.918 --> 00:02:05.502
+00:00:43.226 --> 00:01:53.810
 Example: one fix, from pull request to main
 
 3
-00:02:05.502 --> 00:02:33.410
+00:01:53.810 --> 00:02:21.718
 Easy mistake: The stack only ever runs released versions of a fork.
 

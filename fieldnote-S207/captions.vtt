@@ -1,244 +1,230 @@
 WEBVTT
 
 1
-00:00:00.910 --> 00:00:02.840
-Upstream changed one line.
-
-2
-00:00:03.150 --> 00:00:05.560
-The line opened a pull
-request and an issue,
-
-3
-00:00:05.630 --> 00:00:08.840
-then waited almost seventeen
-hours for a person.
-
-4
-00:00:16.384 --> 00:00:20.034
+00:00:05.540 --> 00:00:09.190
 Service path. Changes that come to you.
 
-5
-00:00:21.172 --> 00:00:23.862
+2
+00:00:10.328 --> 00:00:13.018
 What does the line ask of
 me when upstream moves?
 
-6
-00:00:25.404 --> 00:00:29.894
+3
+00:00:14.560 --> 00:00:19.050
 Your own change reaches main through a
 pull request and a code owner's approval.
 
-7
-00:00:30.284 --> 00:00:32.214
+4
+00:00:19.440 --> 00:00:21.370
 Upstream's changes come the other way.
 
-8
-00:00:32.364 --> 00:00:36.524
+5
+00:00:21.520 --> 00:00:25.680
 Once a day, sync opens a pull
 request into fork_upstream,
 
-9
-00:00:36.524 --> 00:00:40.134
+6
+00:00:25.680 --> 00:00:29.290
 and a tracking issue, both
 labeled human-required.
 
-10
-00:00:40.674 --> 00:00:43.024
+7
+00:00:29.830 --> 00:00:32.180
 Human-required means it's your move:
 
-11
-00:00:43.024 --> 00:00:44.554
+8
+00:00:32.180 --> 00:00:33.710
 review it and merge it.
 
-12
-00:00:44.784 --> 00:00:48.474
+9
+00:00:33.940 --> 00:00:37.630
 Within seconds, Cascade
 Monitor starts the cascade,
 
-13
-00:00:48.544 --> 00:00:50.064
+10
+00:00:37.700 --> 00:00:39.220
 and the issue's labels move.
 
-14
-00:00:50.064 --> 00:00:53.754
+11
+00:00:39.220 --> 00:00:42.910
 cascade-active while it
 runs, then validated.
 
-15
-00:00:54.404 --> 00:00:57.294
+12
+00:00:43.560 --> 00:00:46.450
 Cascade builds the change
 with the fork's own code,
 
-16
-00:00:57.364 --> 00:01:00.174
+13
+00:00:46.520 --> 00:00:49.330
 and opens a second pull request, to main.
 
-17
-00:01:01.044 --> 00:01:02.654
+14
+00:00:50.200 --> 00:00:51.810
 This one gets the full lane:
 
-18
-00:01:02.924 --> 00:01:06.014
+15
+00:00:52.080 --> 00:00:55.170
 an image, deployed and tested in a stack.
 
-19
-00:01:06.724 --> 00:01:10.814
+16
+00:00:55.880 --> 00:00:59.970
 A person approves it and merges
 it, and that closes the issue.
 
-20
-00:01:12.824 --> 00:01:15.914
+17
+00:01:01.980 --> 00:01:05.070
 When the cascade can't
 finish, the labels say so.
 
-21
-00:01:16.384 --> 00:01:21.354
+18
+00:01:05.540 --> 00:01:10.510
 Here, upstream moved to Java 25,
 and the cascade's build failed.
 
-22
-00:01:21.744 --> 00:01:25.424
+19
+00:01:10.900 --> 00:01:14.580
 The issue went cascade-blocked,
 and a second issue opened,
 
-23
-00:01:25.424 --> 00:01:27.664
+20
+00:01:14.580 --> 00:01:16.820
 labeled human-required.
 
-24
-00:01:27.664 --> 00:01:30.384
+21
+00:01:16.820 --> 00:01:19.540
 The fix went to main as
 an ordinary pull request,
 
-25
-00:01:30.384 --> 00:01:32.384
+22
+00:01:19.540 --> 00:01:21.540
 in the provider's own pom.
 
-26
-00:01:32.384 --> 00:01:34.954
+23
+00:01:21.540 --> 00:01:24.110
 Then a person ran the cascade again.
 
-27
-00:01:37.420 --> 00:01:39.180
+24
+00:01:26.576 --> 00:01:28.336
 That fix needed no label:
 
-28
-00:01:39.180 --> 00:01:41.350
+25
+00:01:28.336 --> 00:01:30.506
 the fork owns that path.
 
-29
-00:01:41.500 --> 00:01:45.580
+26
+00:01:30.656 --> 00:01:34.736
 Files that come from
 fork_upstream are upstream-owned.
 
-30
-00:01:45.580 --> 00:01:49.750
+27
+00:01:34.736 --> 00:01:38.906
 If your pull request to main
 changes one, Check Paths fails,
 
-31
-00:01:49.820 --> 00:01:51.750
+28
+00:01:38.976 --> 00:01:40.906
 and the Validation Summary with it.
 
-32
-00:01:52.060 --> 00:01:56.150
+29
+00:01:41.216 --> 00:01:45.306
 Here, a Dependabot pull
 request touched the root pom.
 
-33
-00:01:56.784 --> 00:01:59.914
+30
+00:01:45.940 --> 00:01:49.070
 To bring an upstream fix
 in early, on purpose,
 
-34
-00:01:59.984 --> 00:02:03.114
+31
+00:01:49.140 --> 00:01:52.270
 add the port label,
 and re-run Check Paths.
 
-35
-00:02:04.304 --> 00:02:07.714
+32
+00:01:53.460 --> 00:01:56.870
 It passes, and names the
 file as a declared port.
 
-36
-00:02:09.940 --> 00:02:12.030
+33
+00:01:59.096 --> 00:02:01.186
 The third change is the line's own:
 
-37
-00:02:12.180 --> 00:02:15.390
+34
+00:02:01.336 --> 00:02:04.546
 the workflows every fork
 gets from the template.
 
-38
-00:02:16.020 --> 00:02:21.220
+35
+00:02:05.176 --> 00:02:10.376
 Once a day, template sync proposes the
 template's changes as one pull request to
 
-39
-00:02:21.220 --> 00:02:23.710
+36
+00:02:10.376 --> 00:02:12.866
 main, labeled template-sync.
 
-40
-00:02:24.260 --> 00:02:28.670
+37
+00:02:13.416 --> 00:02:17.826
 If the template moves again first,
 it updates that same pull request.
 
-41
-00:02:29.352 --> 00:02:34.322
+38
+00:02:18.508 --> 00:02:23.478
 Its branch carries the template's
 whole copy of each file that changed.
 
-42
-00:02:34.392 --> 00:02:37.442
+39
+00:02:23.548 --> 00:02:26.598
 Like the others, it waits
 for a person to merge it.
 
-43
-00:02:39.452 --> 00:02:40.702
+40
+00:02:28.608 --> 00:02:29.858
 An easy mistake:
 
-44
-00:02:40.772 --> 00:02:44.622
+41
+00:02:29.928 --> 00:02:33.778
 template sync will overwrite the
 workflow change I made in my fork.
 
-45
-00:02:44.692 --> 00:02:46.462
+42
+00:02:33.848 --> 00:02:35.618
 It opens a pull request.
 
-46
-00:02:46.772 --> 00:02:51.102
+43
+00:02:35.928 --> 00:02:40.258
 A local edit you want to keep
 shows there as a change to review,
 
-47
-00:02:51.212 --> 00:02:54.782
+44
+00:02:40.368 --> 00:02:43.938
 and nothing lands on main
 until a person merges.
 
-48
-00:02:55.092 --> 00:02:59.822
+45
+00:02:44.248 --> 00:02:48.978
 Check with gh pr list, and
 the template-sync label.
 
-49
-00:03:02.472 --> 00:03:03.752
+46
+00:02:51.628 --> 00:02:52.908
 So now you can say:
 
-50
-00:03:03.752 --> 00:03:07.752
+47
+00:02:52.908 --> 00:02:56.908
 when upstream moves, the line
 opens the pull requests,
 
-51
-00:03:07.752 --> 00:03:10.482
+48
+00:02:56.908 --> 00:02:59.638
 and its labels tell me when it's my move.
 
-52
-00:03:12.912 --> 00:03:14.682
+49
+00:03:02.068 --> 00:03:03.838
 Next, a deep dive:
 
-53
-00:03:14.752 --> 00:03:16.762
+50
+00:03:03.908 --> 00:03:05.918
 how is fork_upstream generated?
 

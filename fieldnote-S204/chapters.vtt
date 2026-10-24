@@ -1,14 +1,14 @@
 WEBVTT
 
 1
-00:00:28.340 --> 00:01:09.564
+00:00:12.140 --> 00:00:53.364
 The image lock ties each service to one commit and one digest
 
 2
-00:01:09.564 --> 00:01:31.248
+00:00:53.364 --> 00:01:15.048
 A canonical image ages toward retention until a refresh moves it
 
 3
-00:01:31.248 --> 00:01:56.508
+00:01:15.048 --> 00:01:40.308
 Easy mistake: My environment picks up the fork's new main on its own.
 

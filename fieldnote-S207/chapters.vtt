@@ -1,18 +1,18 @@
 WEBVTT
 
 1
-00:00:24.694 --> 00:01:36.710
+00:00:13.850 --> 00:01:25.866
 Sync, cascade and the tracking issue's labels
 
 2
-00:01:36.710 --> 00:02:09.230
+00:01:25.866 --> 00:01:58.386
 Upstream-owned files change only with the port label
 
 3
-00:02:09.230 --> 00:02:38.782
+00:01:58.386 --> 00:02:27.938
 Template sync proposes a pull request; nothing lands until a person merges
 
 4
-00:02:38.782 --> 00:03:01.562
+00:02:27.938 --> 00:02:50.718
 Easy mistake: Template sync will overwrite the workflow change I made in my fork.
 

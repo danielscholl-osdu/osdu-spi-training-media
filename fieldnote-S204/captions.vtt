@@ -1,154 +1,133 @@
 WEBVTT
 
 1
-00:00:00.800 --> 00:00:03.560
-Thirteen services and the schema loader.
-
-2
-00:00:03.870 --> 00:00:05.720
-Every source reads azure.
-
-3
-00:00:06.030 --> 00:00:10.120
-Each one is a build of a
-service fork's main branch.
-
-4
-00:00:10.830 --> 00:00:12.600
-So whose image is running?
-
-5
-00:00:12.990 --> 00:00:14.040
-Follow one.
-
-6
-00:00:21.780 --> 00:00:24.590
+00:00:05.580 --> 00:00:08.390
 Service path. Whose image is running.
 
-7
-00:00:25.458 --> 00:00:27.508
+2
+00:00:09.258 --> 00:00:11.308
 Which commit does each service run?
 
-8
-00:00:29.010 --> 00:00:34.370
+3
+00:00:12.810 --> 00:00:18.170
 At spi up, the CLI asks GHCR,
 for each of thirteen forks,
 
-9
-00:00:34.370 --> 00:00:38.650
+4
+00:00:18.170 --> 00:00:22.450
 which digest main-snapshot names,
 and records it in the image lock,
 
-10
-00:00:38.650 --> 00:00:40.260
+5
+00:00:22.450 --> 00:00:24.060
 under the commit's sha tag.
 
-11
-00:00:42.542 --> 00:00:45.672
+6
+00:00:26.342 --> 00:00:29.472
 Partition's tag names a
 commit on its fork's main,
 
-12
-00:00:45.702 --> 00:00:48.872
+7
+00:00:29.502 --> 00:00:32.672
 an upstream integration
 merged that same day.
 
-13
-00:00:49.822 --> 00:00:55.502
+8
+00:00:33.622 --> 00:00:39.302
 On GHCR, that tag points at one
 digest, and that digest is what both
 
-14
-00:00:55.502 --> 00:00:57.192
+9
+00:00:39.302 --> 00:00:40.992
 partition pods run.
 
-15
-00:00:58.142 --> 00:01:01.342
+10
+00:00:41.942 --> 00:00:45.142
 A tag can move. The lock keeps the digest,
 
-16
-00:01:01.342 --> 00:01:03.032
+11
+00:00:45.142 --> 00:00:46.832
 and the build date beside it.
 
-17
-00:01:03.646 --> 00:01:07.976
+12
+00:00:47.446 --> 00:00:51.776
 Whose image? The fork's, from
 one commit you can read.
 
-18
-00:01:10.274 --> 00:01:12.764
+13
+00:00:54.074 --> 00:00:56.564
 Every image ages from
 the day it was built:
 
-19
-00:01:12.994 --> 00:01:15.404
+14
+00:00:56.794 --> 00:00:59.204
 the Built column in spi info.
 
-20
-00:01:15.954 --> 00:01:19.244
+15
+00:00:59.754 --> 00:01:03.044
 Once it is old enough, and
 main has built past it,
 
-21
-00:01:19.394 --> 00:01:22.274
+16
+00:01:03.194 --> 00:01:06.074
 GHCR retention can delete it.
 
-22
-00:01:22.274 --> 00:01:28.044
+17
+00:01:06.074 --> 00:01:11.844
 So spi info and spi status
 mark an old canonical,
 
-23
-00:01:28.194 --> 00:01:29.724
+18
+00:01:11.994 --> 00:01:13.524
 and a refresh moves it.
 
-24
-00:01:31.918 --> 00:01:33.248
+19
+00:01:15.718 --> 00:01:17.048
 An easy mistake:
 
-25
-00:01:33.398 --> 00:01:36.768
+20
+00:01:17.198 --> 00:01:20.568
 my environment picks up the
 fork's new main on its own.
 
-26
-00:01:37.078 --> 00:01:42.678
+21
+00:01:20.878 --> 00:01:26.478
 It doesn't. spi up chooses images once,
 and running it again keeps the lock unless
 
-27
-00:01:42.678 --> 00:01:44.208
+22
+00:01:26.478 --> 00:01:28.008
 you ask for a refresh.
 
-28
-00:01:44.678 --> 00:01:47.808
+23
+00:01:28.478 --> 00:01:31.608
 Only the shared environment
 refreshes on a schedule.
 
-29
-00:01:48.118 --> 00:01:51.638
+24
+00:01:31.918 --> 00:01:35.438
 On yours, read the built date in spi info,
 
-30
-00:01:51.638 --> 00:01:54.768
+25
+00:01:35.438 --> 00:01:38.568
 and refresh before the mark
 becomes a deleted image.
 
-31
-00:01:57.378 --> 00:01:58.628
+26
+00:01:41.178 --> 00:01:42.428
 So now you can say:
 
-32
-00:01:58.858 --> 00:02:02.778
+27
+00:01:42.658 --> 00:01:46.578
 the lock ties each service to
 one fork commit and one digest,
 
-33
-00:02:02.778 --> 00:02:04.868
+28
+00:01:46.578 --> 00:01:48.668
 and it moves only when I refresh it.
 
-34
-00:02:07.282 --> 00:02:11.052
+29
+00:01:51.082 --> 00:01:54.852
 Next: how do I prove a change
 before a pull request?
 
