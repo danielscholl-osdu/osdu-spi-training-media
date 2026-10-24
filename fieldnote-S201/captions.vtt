@@ -1,0 +1,156 @@
+WEBVTT
+
+1
+00:00:00.910 --> 00:00:03.390
+spi up returned after
+thirty-seven minutes.
+
+2
+00:00:03.390 --> 00:00:07.080
+Twenty-two minutes later, the
+environment was Deployable.
+
+3
+00:00:13.442 --> 00:00:16.492
+Service path. Your own environment.
+
+4
+00:00:17.558 --> 00:00:19.728
+How do I get an environment I can use?
+
+5
+00:00:21.230 --> 00:00:22.870
+Start with spi check.
+
+6
+00:00:22.870 --> 00:00:28.030
+It confirms the tools spi drives, and that
+your Azure sign-in may create resource
+
+7
+00:00:28.030 --> 00:00:30.960
+groups, clusters and role assignments.
+
+8
+00:00:31.590 --> 00:00:34.800
+Then spi up, with a name
+for your environment.
+
+9
+00:00:34.870 --> 00:00:38.230
+It builds your stack as one resource
+group in your subscription.
+
+10
+00:00:38.230 --> 00:00:42.790
+Thirty-seven minutes later,
+in this take, it returned,
+
+11
+00:00:42.790 --> 00:00:45.760
+with Flux reconciling in the background.
+
+12
+00:00:47.700 --> 00:00:50.620
+spi up returns before the
+environment is usable.
+
+13
+00:00:50.770 --> 00:00:52.620
+Its own last lines say so:
+
+14
+00:00:52.690 --> 00:00:54.940
+deployable after convergence.
+
+15
+00:00:55.250 --> 00:00:57.180
+So wait for Deployable.
+
+16
+00:00:57.570 --> 00:01:02.770
+spi status, with --watch,
+refreshes every thirty seconds,
+
+17
+00:01:02.770 --> 00:01:07.260
+and its summary reads Not deployable
+while Flux is still working.
+
+18
+00:01:07.810 --> 00:01:13.100
+Here it turned to Deployable twenty-two
+minutes after spi up returned.
+
+19
+00:01:13.810 --> 00:01:15.340
+That's the word to wait for.
+
+20
+00:01:17.918 --> 00:01:21.598
+Then use it. spi info
+names your endpoints:
+
+21
+00:01:21.598 --> 00:01:27.288
+the gateway, where the OSDU APIs answer,
+with Kibana and Airflow beside it.
+
+22
+00:01:27.758 --> 00:01:31.448
+When you're done, give the
+environment back with spi down.
+
+23
+00:01:31.998 --> 00:01:37.128
+It keeps your managed identities,
+so the next spi up reuses them.
+
+24
+00:01:39.554 --> 00:01:40.714
+An easy mistake:
+
+25
+00:01:40.714 --> 00:01:43.124
+the command finished, so it is ready.
+
+26
+00:01:43.434 --> 00:01:47.604
+A finished spi up means the build
+went through without a fatal error,
+
+27
+00:01:47.674 --> 00:01:49.524
+not that an API is ready.
+
+28
+00:01:49.754 --> 00:01:55.524
+Moments after it returned, the
+summary still said Not deployable:
+
+29
+00:01:55.594 --> 00:01:59.364
+Flux was reconciling, and
+setup jobs had yet to run.
+
+30
+00:01:59.674 --> 00:02:02.964
+Check with spi status --watch.
+
+31
+00:02:05.382 --> 00:02:06.592
+So now you can say:
+
+32
+00:02:06.902 --> 00:02:10.592
+spi up returns before the
+environment is usable,
+
+33
+00:02:10.662 --> 00:02:14.192
+and spi status says when it's Deployable.
+
+34
+00:02:16.726 --> 00:02:19.376
+Next: who does the stack think you are?
+
