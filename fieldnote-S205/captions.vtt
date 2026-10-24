@@ -1,0 +1,145 @@
+WEBVTT
+
+1
+00:00:00.800 --> 00:00:04.110
+Eleven tests passed against
+a live partition service,
+
+2
+00:00:04.110 --> 00:00:05.560
+run from a laptop.
+
+3
+00:00:05.950 --> 00:00:10.680
+Not any suite: the one built from
+the commit this environment runs.
+
+4
+00:00:10.910 --> 00:00:12.360
+Here's how it knows.
+
+5
+00:00:20.032 --> 00:00:23.242
+Service path. Prove it from your desk.
+
+6
+00:00:24.300 --> 00:00:27.110
+How do I prove a change
+before a pull request?
+
+7
+00:00:28.620 --> 00:00:34.220
+When spi up resolved partition, it also
+recorded the acceptance image built from the
+
+8
+00:00:34.220 --> 00:00:37.460
+same commit. Once your
+environment is Deployable,
+
+9
+00:00:37.460 --> 00:00:43.070
+spi test pulls that image by digest, and
+runs its suite against your services.
+
+10
+00:00:43.704 --> 00:00:47.784
+The verdict names the image it ran, and
+the lock pairs that image with the commit
+
+11
+00:00:47.784 --> 00:00:50.434
+spi info shows for partition.
+
+12
+00:00:50.664 --> 00:00:51.794
+The same commit.
+
+13
+00:00:54.246 --> 00:00:56.326
+A change on your desk gets there as a pin.
+
+14
+00:00:56.326 --> 00:01:02.086
+spi service pin --source builds
+the JAR from your checkout,
+
+15
+00:01:02.086 --> 00:01:05.136
+builds the image in your
+environment's own registry,
+
+16
+00:01:05.366 --> 00:01:09.696
+pins partition to that digest,
+and waits until a pod runs it.
+
+17
+00:01:10.262 --> 00:01:12.752
+spi service list shows the pin:
+
+18
+00:01:12.822 --> 00:01:15.192
+a local build of your checkout's commit.
+
+19
+00:01:16.360 --> 00:01:21.650
+Then spi test --source runs your
+checkout's own suite against it.
+
+20
+00:01:21.880 --> 00:01:25.400
+The checkout is at the pin's
+commit, and its tree is clean,
+
+21
+00:01:25.400 --> 00:01:27.650
+so the run is labeled matched.
+
+22
+00:01:28.364 --> 00:01:31.174
+Now edit one file, and run it again.
+
+23
+00:01:31.644 --> 00:01:35.254
+It still passes, but
+it's labeled unmatched.
+
+24
+00:01:35.404 --> 00:01:38.294
+Your checkout is no longer
+the commit the pod runs,
+
+25
+00:01:38.604 --> 00:01:41.814
+so this pass proves
+nothing about that commit.
+
+26
+00:01:42.604 --> 00:01:46.374
+To prove the change,
+commit it and pin again.
+
+27
+00:01:47.884 --> 00:01:52.334
+When you're done, spi service reset
+puts the canonical image back.
+
+28
+00:01:55.112 --> 00:01:56.242
+So now you can say:
+
+29
+00:01:56.312 --> 00:02:00.002
+spi test runs the suite my
+deployed commit shipped,
+
+30
+00:02:00.112 --> 00:02:02.482
+and my own change gets there as a pin.
+
+31
+00:02:04.864 --> 00:02:08.874
+Next: what happens to my change
+after I open a pull request?
+
